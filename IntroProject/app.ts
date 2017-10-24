@@ -3,7 +3,7 @@
 class MainCtrl {
     static inject = ['$scope'];
     constructor($scope) {
-        $scope.greeting1 = 'hello, world!!!!';
+        $scope.greeting1 = 'hello, world';
         $scope.greeting2 = 'Angular and typescript';
 
         }

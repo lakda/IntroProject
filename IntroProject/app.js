@@ -1,7 +1,7 @@
 /// <reference path="Scripts/typings/angularjs/angular.d.ts" />
 var MainCtrl = (function () {
     function MainCtrl($scope) {
-        $scope.greeting1 = 'hello, world!!!!';
+        $scope.greeting1 = 'hello, world';
         $scope.greeting2 = 'Angular and typescript';
     }
     return MainCtrl;
