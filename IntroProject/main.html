@@ -1,2 +1,8 @@
-﻿<p>{{ greeting1 }}</p>
-<p>{{ greeting2 }}</p>
+﻿<div>
+    <p>{{ greeting1 }}</p>
+    <p>{{ greeting2 }}</p>   
+</div>
+<div>
+    <button class="btn-success" ng-click="setGreeting1('A New Greeting')" >Change First Greeting</button>
+    <button class="btn-success" ng-click="setGreeting2('Using ng.IScope')">Change Second Greeting</button>
+</div>

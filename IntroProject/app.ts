@@ -1,43 +1,43 @@
 ﻿/// <reference path="Scripts/typings/angularjs/angular.d.ts" />
 
-class MainCtrl {
-    static inject = ['$scope'];
-    constructor($scope) {
-        $scope.greeting1 = 'hello, world';
-        $scope.greeting2 = 'Angular and typescript';
+module ClassProject {
+    'use strict';
 
-        }
+    angular.module('classProjectApp', ['ngRoute']);
 
-}
-class Config {
-    static inject = ['$routeProvider'];
-    constructor($routeProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'main.html',
-                controller: 'MainCtrl'
-            })
-            .otherwise({
-                redirectTo: '/'
-            });
+    export var getModule: () => ng.IModule = () => {
+        return angular.module('classProjectApp');
     }
 }
 
+/*
 
 
-angular.module('classProjectApp', ['ngRoute', 'ngCookies'])
-    .config(Config)
-    //.run(Run)
-    .controller("MainCtrl", ["$scope", MainCtrl]);
+
+
+//angular.module('classProjectApp', ['ngRoute', 'ngCookies'])
+angular.module('classProjectApp', ['ngRoute'])
+    .config(Config);
+    //.run(Run);
+    //.controller("MainCtrl", ["$scope", MainCtrl]);
 
 //---------------------------------------------------------------------------------
+class currentUser {
+    public static get userId(): string { return 'jdoe'; }
+    public static get fullName(): string { return 'John Doe'; }
+}
 
+    
 interface ICurrentUser {
     userId: string;
     fullName: string;
 }
+
+    
 // Function that returns void
+
 ((): void => {
+
     var currentUser: ICurrentUser = {
         userId: '',
         fullName: ''
@@ -52,13 +52,25 @@ interface IAppCookies {
     userId: string;
 }
 
+
+
 class Run {
     //variables can be injected
-    static inject = ['$rootScope', '$cookies', 'currentUser'];
-    constructor($rootScope: ng.IRootScopeService, $cookies: IAppCookies, currentUser: ICurrentUser) {
+    //static inject = ['$rootScope', '$cookies', 'currentUser'];
+    static inject = ['$rootScope', 'currentUser'];
+    //constructor($rootScope: ng.IRootScopeService, $cookies: IAppCookies, currentUser: ICurrentUser) {
+    constructor($rootScope: ng.IRootScopeService, currentUser) {
         console.log('Running.....');
-        console.log($cookies);
+        //console.log($cookies);
+        console.log(currentUser.userId);
+        console.log(currentUser.fullName);
 
-        currentUser.userId = $cookies.userId;
+        //currentUser.userId = $cookies.userId;
     }
 }
+
+angular.module('classProjectApp')
+    .run(Run)
+    .controller('MainCtrl', ['$scope', MainCtrl]);
+
+*/

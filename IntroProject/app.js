@@ -1,45 +1,74 @@
 /// <reference path="Scripts/typings/angularjs/angular.d.ts" />
-var MainCtrl = (function () {
-    function MainCtrl($scope) {
-        $scope.greeting1 = 'hello, world';
-        $scope.greeting2 = 'Angular and typescript';
-    }
-    return MainCtrl;
-}());
-MainCtrl.inject = ['$scope'];
-var Config = (function () {
-    function Config($routeProvider) {
-        $routeProvider
-            .when('/', {
-            templateUrl: 'main.html',
-            controller: 'MainCtrl'
-        })
-            .otherwise({
-            redirectTo: '/'
-        });
-    }
-    return Config;
-}());
-Config.inject = ['$routeProvider'];
-angular.module('classProjectApp', ['ngRoute', 'ngCookies'])
-    .config(Config)
-    .controller("MainCtrl", ["$scope", MainCtrl]);
+var ClassProject;
+(function (ClassProject) {
+    'use strict';
+    angular.module('classProjectApp', ['ngRoute']);
+    ClassProject.getModule = function () {
+        return angular.module('classProjectApp');
+    };
+})(ClassProject || (ClassProject = {}));
+/*
+
+
+
+
+//angular.module('classProjectApp', ['ngRoute', 'ngCookies'])
+angular.module('classProjectApp', ['ngRoute'])
+    .config(Config);
+    //.run(Run);
+    //.controller("MainCtrl", ["$scope", MainCtrl]);
+
+//---------------------------------------------------------------------------------
+class currentUser {
+    public static get userId(): string { return 'jdoe'; }
+    public static get fullName(): string { return 'John Doe'; }
+}
+
+    
+interface ICurrentUser {
+    userId: string;
+    fullName: string;
+}
+
+    
 // Function that returns void
-(function () {
-    var currentUser = {
+
+((): void => {
+
+    var currentUser: ICurrentUser = {
         userId: '',
         fullName: ''
     };
+
     angular.module('classProjectApp').value('currentUser', currentUser);
 })();
-var Run = (function () {
-    function Run($rootScope, $cookies, currentUser) {
+
+//---------------------------------------------------------------------------------
+
+interface IAppCookies {
+    userId: string;
+}
+
+
+
+class Run {
+    //variables can be injected
+    //static inject = ['$rootScope', '$cookies', 'currentUser'];
+    static inject = ['$rootScope', 'currentUser'];
+    //constructor($rootScope: ng.IRootScopeService, $cookies: IAppCookies, currentUser: ICurrentUser) {
+    constructor($rootScope: ng.IRootScopeService, currentUser) {
         console.log('Running.....');
-        console.log($cookies);
-        currentUser.userId = $cookies.userId;
+        //console.log($cookies);
+        console.log(currentUser.userId);
+        console.log(currentUser.fullName);
+
+        //currentUser.userId = $cookies.userId;
     }
-    return Run;
-}());
-//variables can be injected
-Run.inject = ['$rootScope', '$cookies', 'currentUser'];
+}
+
+angular.module('classProjectApp')
+    .run(Run)
+    .controller('MainCtrl', ['$scope', MainCtrl]);
+
+*/ 
 //# sourceMappingURL=app.js.map
