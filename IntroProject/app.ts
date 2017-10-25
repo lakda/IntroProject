@@ -1,4 +1,5 @@
-﻿/// <reference path="Scripts/typings/angularjs/angular.d.ts" />
+﻿/// <reference path="C:\Users\ricardo.oksa\Documents\Visual Studio 2017\Projects\IntroProject\IntroProject\Scripts\typings\angularjs\angular.d.ts" />
+
 
 module ClassProject {
     'use strict';
